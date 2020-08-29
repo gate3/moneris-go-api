@@ -1,7 +1,7 @@
 package helpers
 
 const (
-	MONERIS_PROTOCOL = "https"
+	MONERIS_PROTOCOL = "https://"
 	MONERIS_HOST = "www3.moneris.com"
 	MONERIS_TEST_HOST = "esqa.moneris.com"
 	MONERIS_US_HOST = "esplus.moneris.com"
