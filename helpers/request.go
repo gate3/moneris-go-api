@@ -3,12 +3,14 @@ package helpers
 import (
 	"bytes"
 	"encoding/json"
+	"github.com/moneris-go-api/config"
 	"io/ioutil"
 	"net/http"
 )
 
 type HttpHelper struct {
 	baseUrl string
+	config *config.Config
 }
 
 const (
@@ -29,7 +31,10 @@ const (
 
 func (h *HttpHelper) FormRequestUrl (path string) string {
 	if h.baseUrl == "" {
-		h.baseUrl = MONERIS_HOST + MONERIS_TEST_HOST
+		h.baseUrl = MONERIS_PROTOCOL + MONERIS_TEST_HOST
+		if h.config.IsLiveEnvironment {
+			h.baseUrl = MONERIS_PROTOCOL + MONERIS_HOST
+		}
 	}
 	return h.baseUrl + "/" + path
 }
